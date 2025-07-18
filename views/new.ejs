@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>New Book</title></head>
+<body>
+    <h1>Add New Book</h1>
+    <form method="POST" action="/books">
+        <label>Title: <input name="title" required></label><br>
+        <label>Author: <input name="author" required></label><br>
+        <label>Rating (1-10): <input name="rating" type="number" min="1" max="10"></label><br>
+        <label>Date Read: <input name="date_read" type="date"></label><br>
+        <label>Cover ID (from Open Library): <input name="cover_id"></label><br>
+        <label>Notes:<br><textarea name="notes" rows="5" cols="40"></textarea></label><br>
+        <button type="submit">Add Book</button>
+    </form>
+    <a href="/">Back to list</a>
+</body>
+</html>

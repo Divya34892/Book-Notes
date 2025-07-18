@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Notes</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Book Notes</h1>
+    <a href="/books/new">➕ Add a new book</a>
+    <form method="GET" action="/">
+        <label>Sort by:</label>
+        <select name="sort" onchange="this.form.submit()">
+            <option value="date_read" <%= sort === 'date_read' ? 'selected' : '' %>>Most Recent</option>
+            <option value="rating" <%= sort === 'rating' ? 'selected' : '' %>>Rating</option>
+            <option value="title" <%= sort === 'title' ? 'selected' : '' %>>Title</option>
+        </select>
+    </form>
+    <ul>
+        <% books.forEach(book => { %>
+            <li>
+                <h3><%= book.title %> by <%= book.author %></h3>
+                <% if (book.cover_id) { %>
+                    <img src="D:\divya\download.jpg" alt="Cover" width="100">
+                <% } %>
+                <p><strong>Rating:</strong> <%= book.rating %>/10</p>
+                <p><strong>Date Read:</strong> <%= book.date_read.toDateString() %></p>
+                <p><strong>Notes:</strong> <%= book.notes %></p>
+                <a href="/books/<%= book.id %>/edit">Edit</a>
+                <form method="POST" action="/books/<%= book.id %>?_method=DELETE" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
